@@ -3,7 +3,7 @@ const {Builder, By, Key, util} = require('selenium-webdriver');
 let driver;
 
 const Keys = {};
-Object.assign(keys, Key);
+Object.assign(Keys, Key);
 
 const browser = async(select="chrome", key="") => {
     select = select.toLowerCase();
@@ -33,5 +33,5 @@ const get = async(element, sendKeys=false, send) => {
 }
 
 module.exports = {
-    browser, goto, get, keys
+    browser, goto, get, Keys
 }
