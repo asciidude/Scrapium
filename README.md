@@ -23,5 +23,3 @@ This can also be used for **automation**!
 `get()` - Get an element on the website, send keys?, keys to send
 
 **For developers using this GitHub: Scrapium uses selenium-webdriver**
-
-**Note: I do not reccomend using this; you should use Puppeteer. This is still a prototype and has very little features**
