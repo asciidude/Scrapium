@@ -3,13 +3,14 @@ Using and setting up Scrapium is as easy as 1, 2, 3!
 
 # Getting started
 ```js
-const Scrapium = require('Scrapium');
-const { Keys } = require('Scrapium');
+const Scrapium = require('scrapium');
+const { Keys } = require('scrapium');
 
 const Start = async() => {
     await Scrapium.browser('chrome');
     await Scrapium.goto('https://www.google.com');
     await Scrapium.get('q', true, ["Scrapium", Keys.RETURN]);
+    await Scrapium.kill();
 }
 ```
 **Very important:** ensure you have the webdriver of the browser you are trying to use, otherwise you'll get an error<br>
@@ -19,7 +20,12 @@ This can also be used for **automation**!
 
 # Docs
 `browser()` - Sets the web browser to use <br>
-`goto()` - Goes to a website <br>
-`get()` - Get an element on the website, send keys?, keys to send
+`goto()` - Goes to specified website <br>
+`get()` - Get an element on the website, send keys?, keys to send <br>
+`kill()` - Will not close ChromeDriver process, will just kill node process (exits on code 0) <br>
+`switchTab()` - Switch to a tab (not working or unstable, don't use) <br>
+`title()` - Return the title of the page you are on <br>
+`refresh()` - Refresh the page you are on <br>
+`back()` - Go to the previous link that you were on
 
-**For developers using this GitHub: Scrapium uses selenium-webdriver**
+*GitHub probably has the latest version of Scrapium*
