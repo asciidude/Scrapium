@@ -32,7 +32,7 @@ This can also be used for **automation**!
 `getByLinkText(*text)` - Get element by link text <br>
 `kill()` - Will not close ChromeDriver process, will just kill node process (exits on code 0) <br>
 `switchTab(*tabIndex)` - Switch to a tab (not working or unstable, don't use) <br>
-`getTitle()` - Return the title of the page you are on (Promise) <br>
+`getTitle()` - Return the title of the page you are on <br>
 `refresh()` - Refresh the page you are on <br>
 `back()` - Go to the previous link that you were on <br>
 `click(element)` - Click on an element <br>
