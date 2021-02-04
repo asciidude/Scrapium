@@ -103,6 +103,15 @@ const newTab = async() => {
     await driver.executeScript("window.open('', '_blank');");
 }
 
+const executeScript = async(script) => {
+    if(!typeof script == String) {
+        console.log(new TypeError("Script parameter must be a string"));
+        return;
+    }
+
+    await driver.executeScript(script);
+}
+
 const refresh = async() => {
     await driver.navigate().refresh();
 }
@@ -171,9 +180,7 @@ const getAllCookies = () => {
 }
 
 const getTitle = async() => {
-    (await driver).getTitle().finally().then((result) => {
-        return result;
-    });
+    return (await driver).getTitle();
 }
 
 const kill = async() => {
@@ -188,5 +195,5 @@ module.exports = {
     switchTab, getTitle, getByXpath,
     click, doubleClick, addCookie,
     getNamedCookie, getAllCookies,
-    getByLinkText,
+    getByLinkText, executeScript
 }
