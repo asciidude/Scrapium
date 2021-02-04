@@ -9,12 +9,11 @@ const { keys } = require('scrapium');
 const Start = async() => {
     await Scrapium.browser('chrome');
     await Scrapium.goto('https://www.google.com');
-    await Scrapium.get('q', ["Scrapium", Keys.RETURN]);
+    await Scrapium.get('q', ["Scrapium", keys.RETURN]);
     await Scrapium.kill();
 }
 ```
-**Very important:** ensure you have the webdriver of the browser you are trying to use, otherwise you'll get an error<br>
-I personally recommend [ChromeDriver](https://chromedriver.chromium.org/downloads) (uses Chromium)
+**Very important:** ensure you have the webdriver of the browser you are trying to use, otherwise you'll get an error
 
 This can also be used for **automation**!
 
@@ -35,5 +34,12 @@ This can also be used for **automation**!
 `getTitle()` - Return the title of the page you are on <br>
 `refresh()` - Refresh the page you are on <br>
 `back()` - Go to the previous link that you were on <br>
-`click(element)` - Click on an element <br>
+`click(*element)` - Click on an element <br>
+`executeScript(*script)` - Executes a script <br>
 `keys` - Variable, stores all keys
+
+# Updates (2.0.6)
+* Added executeScript method
+* Fixed getTitle, working Promise now
+
+*GitHub probably has the latest version of Scrapium*
