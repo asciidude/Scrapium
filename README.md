@@ -41,5 +41,3 @@ This can also be used for **automation**!
 # Updates (2.0.6)
 * Added executeScript method
 * Fixed getTitle, working Promise now
-
-*GitHub probably has the latest version of Scrapium*
