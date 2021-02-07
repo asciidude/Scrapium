@@ -3,6 +3,7 @@ const {Builder, By, Key, util} = require('selenium-webdriver');
 const process = require('process');
 
 //let driver = new Builder().forBrowser('firefox').build();
+let selectedBrowser;
 let driver;
 
 const keys = {};
@@ -12,12 +13,16 @@ const browser = async(select="chrome") => {
     select = select.toLowerCase();
     if(select == "firefox") {
         driver = await new Builder().forBrowser('firefox').build();
+        selectedBrowser = select;
     } else if(select == "safari") {
         driver = await new Builder().forBrowser('safari').build();
+        selectedBrowser = select;
     } else if(select == "ie" || select == "internetexplorer" || select == "internet explorer") {
         driver = await new Builder().forBrowser('ie').build();
+        selectedBrowser = select;
     } else if(select == "chrome") {
         driver = await new Builder().forBrowser('chrome').build();
+        selectedBrowser = select;
     } else {
         return console.log(new TypeError("You must choose from this list for your browser: " + browsers.join(', ')));
     }
@@ -25,6 +30,10 @@ const browser = async(select="chrome") => {
 
 const goto = async(website="https://google.com") => {
     await driver.get(website);
+}
+
+const getSelectedBrowser = async() => {
+    return selectedBrowser ? selectedBrowser : "No browser has been selected";
 }
 
 const getByName = async(name, sendKeys) => {
@@ -183,8 +192,26 @@ const getTitle = async() => {
     return (await driver).getTitle();
 }
 
+
+const waitForAlert = async() => {
+    await driver.wait(until.alertIsPresent());
+}
+
+const switchToAlert = async() => {
+    await driver.switchTo().alert();
+}
+
+const getElementsFromElement = async(element, elements) => {
+    return await element.findElements(elements);
+}
+
+const acceptAlert = async(alert) => {
+    alert.accept();
+}
+
 const kill = async() => {
-    console.log("Successfully killed Scrapium process (ID: " + process.pid + ")");
+    console.log("Successfully killed Scrapium node process (ID: " + process.pid + ") and Driver");
+    await driver.close();
     await process.exit(0);
 }
 
@@ -195,5 +222,8 @@ module.exports = {
     switchTab, getTitle, getByXpath,
     click, doubleClick, addCookie,
     getNamedCookie, getAllCookies,
-    getByLinkText, executeScript
+    getByLinkText, executeScript,
+    waitForAlert, getSelectedBrowser,
+    switchToAlert, getElementsFromElement,
+    acceptAlert
 }
