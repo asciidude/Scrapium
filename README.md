@@ -36,8 +36,16 @@ This can also be used for **automation**!
 `back()` - Go to the previous link that you were on <br>
 `click(*element)` - Click on an element <br>
 `executeScript(*script)` - Executes a script <br>
+`switchToAlert()` - Switch to an alert <br>
+`getSelectedBrowser()` - Get the selected browser <br>
+`waitForAlert()` - Wait for an alert to pop up on the screen <br>
+`getElementsFromElement(*element, *elements)` - Get all elements from an element <br>
+`acceptAlert()` - Accept the alert (press OK button) <br>
 `keys` - Variable, stores all keys
 
-# Updates (2.0.6)
-* Added executeScript method
-* Fixed getTitle, working Promise now
+# Updates (2.1.0)
+* Added getSelectedBrowser method
+* Added waitForAlert method
+* Added getElementsFromElement method
+* Added acceptAlert method
+* Added switchToAlert method
