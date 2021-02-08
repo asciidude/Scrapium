@@ -37,14 +37,14 @@ const getSelectedBrowser = async() => {
 }
 
 const getByName = async(name, sendKeys) => {
-    if(!(typeof sendKeys == String || typeof sendKeys == Array)) {
+    if(!(typeof sendKeys == 'string' || sendKeys instanceof Array)) {
         if(!sendKeys) return;
         console.log(new SyntaxError("sendKeys parameter must be typeof String or Array"));
         return;
     }
 
     if(sendKeys) {
-        if(typeof sendKeys == String) {
+        if(typeof sendKeys == 'string') {
             (await driver).findElement(By.name(name)).sendKeys(send.join('')).finally().then((result) => {
                 return result;
             });
@@ -61,14 +61,14 @@ const getByName = async(name, sendKeys) => {
 }
 
 const getByXpath = async(path, sendKeys) => {
-    if(!(typeof sendKeys == String || typeof sendKeys == Array)) {
+    if(!(typeof sendKeys == 'string' || sendKeys instanceof Array)) {
         if(!sendKeys) return;
         console.log(new SyntaxError("sendKeys parameter must be typeof String or Array"));
         return;
     }
 
     if(sendKeys) {
-        if(typeof sendKeys == String) {
+        if(typeof sendKeys == 'string') {
             (await driver).findElement(By.xpath(path)).sendKeys(send.join('')).finally().then((result) => {
                 return result;
             });
@@ -85,27 +85,9 @@ const getByXpath = async(path, sendKeys) => {
 }
 
 const getByLinkText = async(text) => {
-    if(!(typeof sendKeys == String || typeof sendKeys == Array)) {
-        if(!sendKeys) return;
-        console.log(new SyntaxError("sendKeys parameter must be typeof String or Array"));
-        return;
-    }
-
-    if(sendKeys) {
-        if(typeof sendKeys == String) {
-            (await driver).findElement(By.linkText(text)).sendKeys(send.join('')).finally().then((result) => {
-                return result;
-            });
-        }
-
-        (await driver).findElement(By.linkText(text)).sendKeys(send.join('').toString()).finally().then((result) => {
-            return result;
-        });
-    } else {
-        (await driver).findElement(By.linkText(text)).finally().then((result) => {
-            return result;
-        });
-    }
+    (await driver).findElement(By.linkText(text)).finally().then((result) => {
+        return result;
+    });
 }
 
 const newTab = async() => {
@@ -113,7 +95,7 @@ const newTab = async() => {
 }
 
 const executeScript = async(script) => {
-    if(!typeof script == String) {
+    if(!typeof script == 'string') {
         console.log(new TypeError("Script parameter must be a string"));
         return;
     }

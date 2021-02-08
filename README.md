@@ -43,9 +43,5 @@ This can also be used for **automation**!
 `acceptAlert()` - Accept the alert (press OK button) <br>
 `keys` - Variable, stores all keys
 
-# Updates (2.1.0)
-* Added getSelectedBrowser method
-* Added waitForAlert method
-* Added getElementsFromElement method
-* Added acceptAlert method
-* Added switchToAlert method
+# Updates (2.1.1)
+* Patch update, fixing instanceof/typeof
